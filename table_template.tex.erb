@@ -1,0 +1,13 @@
+\begin{table}[h]
+    \centering
+    <%- if !caption.empty? then -%>
+    \caption{<%= caption %>}
+    \label{tab:<%= caption %>}
+    <%- end -%>
+    \begin{tabular}{<%= dimensions %>} \hline
+      <%- table.each do |row| -%>
+        <%- row.delete_if { |e| e.nil? } -%>
+        <%= row.join(" & ") + " \\\\ \\hline" %>
+      <%- end -%>
+    \end{tabular}
+\end{table}
