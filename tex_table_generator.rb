@@ -8,10 +8,14 @@ OUTPUT_FILE = Pathname(__FILE__) + '../table_output.tex'
 
 table = CSV.read(CSV_FILE)
 columns = table.max_by { |e| e.size } .size
+# nil fill
+table.each do |row|
+  row.fill(nil, row.size..columns-1)
+end
 
 caption = ''
 dimensions = []
-columns.times do
+(0..columns).each do
   dimensions << 'c'
 end
 dimensions = '|' + dimensions * '|' + '|'
