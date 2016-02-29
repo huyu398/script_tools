@@ -2,9 +2,9 @@ require 'erb'
 require 'pathname'
 require 'csv'
 
-CSV_FILE = Pathname(__FILE__) + '../test.csv'
-TEMPLATE_FILE = Pathname(__FILE__) + '../table_template.tex.erb'
-OUTPUT_FILE = Pathname(__FILE__) + '../table_output.tex'
+CSV_FILE = Pathname.pwd + 'test.csv'
+TEMPLATE_FILE = Pathname.pwd + 'table_template.tex.erb'
+OUTPUT_FILE = Pathname.pwd + 'table_output.tex'
 
 table = CSV.read(CSV_FILE)
 columns = table.max_by { |e| e.size } .size
