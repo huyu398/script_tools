@@ -1,6 +1,11 @@
 require 'erb'
 require 'pathname'
 require 'csv'
+require 'optparse'
+
+OptionParser.new do |opt|
+  opt.parse!(ARGV)
+end
 
 CSV_FILE = Pathname.pwd + 'test.csv'
 TEMPLATE_FILE = Pathname.pwd + 'table_template.tex.erb'
