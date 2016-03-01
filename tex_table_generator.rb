@@ -4,6 +4,9 @@ require 'csv'
 require 'optparse'
 
 OptionParser.new do |opt|
+  opt.on('-c', '--caption=TITLE', 'Set the caption of the table') do |v|
+    caption = v
+  end
   opt.parse!(ARGV)
 end
 
@@ -30,7 +33,7 @@ table.each do |row|
   row.fill(nil, row.size..columns-1)
 end
 
-caption = ''
+caption ||= ''
 dimensions = []
 (0..columns).each do
   dimensions << 'c'
