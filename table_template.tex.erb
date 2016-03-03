@@ -1,3 +1,11 @@
+<%- if option[:docmute] then -%>
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{docmute}
+
+\begin{document}
+
+<%- end -%>
 \begin{table}[h]
     \centering
     <%- if !caption.empty? then -%>
@@ -10,3 +18,7 @@
       <%- end -%>
     \end{tabular}
 \end{table}
+<%- if option[:docmute] then -%>
+
+\end{document}
+<%- end -%>
