@@ -5,7 +5,7 @@ require 'optparse'
 
 option = Hash.new
 OptionParser.new do |opt|
-  opt.on('-c', '--caption=TITLE', 'Set the caption of the table') do |v|
+  opt.on('-c', '--caption=TITLE', 'Set the caption of the table (default caption is basename of target file).') do |v|
     option[:caption] = v
   end
   opt.on('-d', '--docmute', 'Use docmute package in output file.') do |v|
