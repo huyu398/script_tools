@@ -37,7 +37,7 @@ table.each do |row|
   row.fill(nil, row.size..columns-1)
 end
 
-caption = option[:caption] || ''
+caption = option[:caption] || File.basename(CSV_FILE, File.extname(CSV_FILE))
 dimensions = []
 (0..columns).each do
   dimensions << 'c'
