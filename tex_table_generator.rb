@@ -8,6 +8,9 @@ OptionParser.new do |opt|
   opt.on('-c', '--caption=TITLE', 'Set the caption of the table (default caption is basename of target file).') do |v|
     option[:caption] = v
   end
+  opt.on('--no-caption', 'Do not use \\caption and \\label command in output file.') do |v|
+    option[:caption] = v
+  end
   opt.on('-d', '--docmute', 'Use docmute package in output file.') do |v|
     option[:docmute] = v
   end
@@ -64,7 +67,7 @@ table.each do |row|
   row.fill(nil, row.size..columns-1)
 end
 
-caption = option[:caption] || File.basename(CSV_FILE, File.extname(CSV_FILE))
+option[:caption] = File.basename(CSV_FILE, File.extname(CSV_FILE)) if option[:caption] == nil
 dimensions = 'c|' * (columns - 1) + 'c'
 if option[:frame]
   dimensions =  '|' + dimensions if option[:frame][:left]

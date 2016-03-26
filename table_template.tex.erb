@@ -8,9 +8,9 @@
 <%- end -%>
 \begin{table}[h]
     \centering
-    <%- if !caption.empty? then -%>
-    \caption{<%= caption %>}
-    \label{tab:<%= caption %>}
+    <%- if option[:caption] then -%>
+    \caption{<%= option[:caption] %>}
+    \label{tab:<%= option[:caption] %>}
     <%- end -%>
     \begin{tabular}{<%= dimensions %>}
       <%- if option[:frame] and option[:frame][:top] then -%>
