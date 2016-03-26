@@ -12,9 +12,18 @@
     \caption{<%= caption %>}
     \label{tab:<%= caption %>}
     <%- end -%>
-    \begin{tabular}{<%= dimensions %>} \hline
+    \begin{tabular}{<%= dimensions %>}
+      <%- if option[:frame] and option[:frame][:top] then -%>
+        \hline
+      <%- end -%>
+        <%= table.shift.join(' & ') -%>
       <%- table.each do |row| -%>
-        <%= row.join(" & ") + " \\\\ \\hline" %>
+        <%- %><%= " \\\\ \\hline" %>
+        <%= row.join(" & ") -%>
+      <%- end -%>
+      <%- if option[:frame] and option[:frame][:bottom] then -%>
+        <%- %> \\ \hline
+      <%- else %>
       <%- end -%>
     \end{tabular}
 \end{table}
